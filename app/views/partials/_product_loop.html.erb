@@ -31,7 +31,13 @@
             <p><%= number_to_currency product.price %></p>
             <p><%= product.description %></p>
           </div>
-          <div class="modal-footer"><button class="btn btn-default" data-dismiss="modal">Close</button><button class="btn btn-primary">Save Changes</button></div>
+          <div class="modal-footer">
+            <%= form_tag add_to_cart_path do %>
+              <%= hidden_field_tag :product_id, product.id %>
+              <%= number_field_tag :quantity, nil, placeholder: "How many?" %>
+              <%= submit_tag "Add to Cart", class: "btn btn-primary" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
