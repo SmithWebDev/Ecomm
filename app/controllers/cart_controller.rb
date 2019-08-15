@@ -1,5 +1,25 @@
 class CartController < ApplicationController
   before_action :authenticate_user!, except: [:add_to_cart, :view_order]
+  def order_complete
+    @order  = Order.find(params[:order_id])
+    @amount = (@order.grand_total.to_f.round(2) * 100).to_i
+
+    customer = Stripe::Customer.create(
+      :email => current_user.email,
+      :card => params[:stripeToken]
+    )
+
+    charge = Stripe::Charge.create(
+      :customer => customer.id
+      :amount => @amount
+      :description => 'Rails Stripe customer'
+      :currency => 'usd'
+    )
+
+    rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to cart_path
+  end
 
   def add_to_cart
     line_item = LineItem.create(product_id: params[:product_id], quantity: params[:quantity])

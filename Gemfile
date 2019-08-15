@@ -36,6 +36,8 @@ gem 'pry-rails'
 gem 'better_errors', group: :development
 gem 'binding_of_caller'
 gem 'jquery-rails'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'figaro'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
