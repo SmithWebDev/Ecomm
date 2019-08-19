@@ -38,6 +38,7 @@ gem 'binding_of_caller'
 gem 'jquery-rails'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'figaro'
+gem 'faker', '~> 2.1', '>= 2.1.2'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

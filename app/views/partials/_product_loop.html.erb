@@ -7,7 +7,7 @@
         <% else %>
         <p>no image</p>
         <% end %>
-        <h3><%= link_to  product.name, product %></h3>
+        <h3><%= link_to  product.name.truncate(25), product %></h3>
         <p><%= number_to_currency product.price %></p>
         <p>
           <a href="#" data-toggle="modal" data-target="#myModal_<%= product.id %>"><span class="glyphicon glyphicon-plus"></span>More Info</a>
